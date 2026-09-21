@@ -24,5 +24,36 @@ Bei IoT-Geräten sind Energie, Rechenleistung und Bandbreite häufig begrenzt. �
 
 Dieser Aufwand entsteht durch die tatsächlich eingesetzten Protokolle und ihre Umsetzung. Allein die Einteilung in vier statt sieben Schichten macht die Datenübertragung nicht schneller oder sparsamer.
 
+## Praktische Netzwerkuntersuchung
+
+### Lokale Netzwerkkonfiguration
+
+Mit `ipconfig /all` habe ich die Konfiguration meines WLAN-Adapters untersucht:
+
+| Angabe          | Ergebnis                            |
+| --------------- | ----------------------------------- |
+| IPv4-Adresse    | 172.20.10.2                         |
+| Subnetzmaske    | 255.255.255.240 beziehungsweise /28 |
+| Subnetz         | 172.20.10.0/28                      |
+| Standardgateway | 172.20.10.1                         |
+| DHCP-Server     | 172.20.10.1                         |
+
+Die IPv4-Konfiguration wird automatisch über DHCP bezogen. Mein Laptop und das Standardgateway befinden sich im selben Subnetz.
+
+### Routingtabelle
+
+Mit `route print -4` habe ich die IPv4-Routingtabelle angezeigt. Das Subnetz 172.20.10.0/28 ist direkt erreichbar. Für Ziele ohne spezifischere passende Route verwendet mein Laptop die Standardroute über 172.20.10.1.
+
+### Routenverfolgung
+
+Mit `tracert 1.1.1.1` habe ich den Weg zum Ziel untersucht. Das Ziel wurde bei Hop 10 erreicht.
+
+Hop 1 zeigte mein Standardgateway mit der privaten IP-Adresse 172.20.10.1. Die erste sichtbare öffentliche IP-Adresse war 92.214.120.28 bei Hop 6. Da die Hops 2 bis 5 nicht antworteten, konnte ich den genauen Übergang zwischen privaten und öffentlichen Adressen nicht erkennen.
+
+Die Sternchen zeigen ausgebliebene Antworten innerhalb der Wartezeit. Sie bedeuten nicht automatisch, dass keine Pakete weitergeleitet werden. In meiner Messung antworteten spätere Stationen und schließlich das Ziel.
+
+Die drei Zeitangaben pro Hop sind getrennte Messungen der Hin- und Rücklaufzeit zwischen meinem Laptop und der antwortenden Station.
+
+
 
 
