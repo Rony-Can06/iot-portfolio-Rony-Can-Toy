@@ -62,5 +62,16 @@ Die drei Zeitangaben pro Hop sind getrennte Messungen der Hin- und Rücklaufzeit
 
 ![Routenverfolgung](tracert.png)
 
+## Praktischer MQTT-Test
+
+Ich habe den HiveMQ Webclient verwendet und mich mit `mqtt-dashboard.com` über Port `8884` mit aktivierter SSL-Option verbunden.
+
+Zunächst habe ich das Topic `hsbi/student/rony-can06/test` mit QoS 0 abonniert. Anschließend habe ich auf demselben Topic die Nachricht `{"status": "online", "message": "Hello Vernetzung!"}` veröffentlicht. Retain war deaktiviert.
+
+Die Nachricht erschien im Bereich „Messages“. Damit konnte ich nachvollziehen, wie der Broker eine veröffentlichte Nachricht an einen Subscriber mit passendem Abonnement weiterleitet. Mein Browserclient übernahm dabei sowohl die Publisher- als auch die Subscriber-Rolle.
+
+![Erfolgreicher MQTT-Test mit empfangener Nachricht](mqtt-test.png)
+
+
 
 
