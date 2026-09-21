@@ -1,5 +1,5 @@
 
-Author: <replace these pointy brackets with your full name>
+Author: Rony-Can Toy
 
 My partner is <replace these pointy brackets with their full name>, [portfolio link](https://github.com/partner/iot-portfolio)
 
