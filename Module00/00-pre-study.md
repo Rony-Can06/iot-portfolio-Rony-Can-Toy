@@ -14,3 +14,15 @@ Bei der Subnetzmaske 255.255.255.0, kurz /24, bilden die ersten drei Zahlenblöc
 
 Zwei unterschiedliche Geräte dürfen im selben Subnetz nicht dieselbe IP-Adresse verwenden, weil dadurch ein Adresskonflikt entsteht. Daten können dann beim falschen Gerät ankommen oder die Kommunikation kann ausfallen.
 
+### 3. OSI-Modell und TCP/IP in der Praxis
+
+Das OSI-Modell beschreibt die Netzwerkkommunikation in sieben Schichten. Das TCP/IP-Modell verwendet vier Schichten und passt häufig besser zur praktischen Umsetzung. Die Aufgaben der oberen drei OSI-Schichten hängen eng zusammen und werden oft gemeinsam von einer Anwendung und ihren Bibliotheken übernommen. Deshalb fasst TCP/IP sie in einer Anwendungsschicht zusammen. Die Aufgaben selbst bleiben erhalten.
+
+Die Grenzen zwischen den Schichten sind in der Praxis nicht immer eindeutig. Ein Router verwendet beispielsweise IP-Adressen für die Weiterleitung, kann aber zusätzlich TCP- oder UDP-Ports für Firewallregeln auswerten. Das OSI-Modell hilft dabei, diese unterschiedlichen Funktionen einzuordnen.
+
+Bei IoT-Geräten sind Energie, Rechenleistung und Bandbreite häufig begrenzt. Überträgt ein Sensor nur einen kleinen Messwert, können die zusätzlichen Protokollheader im Verhältnis zu den Nutzdaten groß sein. Unnötige Protokollschichten oder doppelt umgesetzte Funktionen verursachen zusätzlichen Übertragungs- und Verarbeitungsaufwand. Deshalb sollten Protokolle und Funktionen passend zur Aufgabe gewählt werden.
+
+Dieser Aufwand entsteht durch die tatsächlich eingesetzten Protokolle und ihre Umsetzung. Allein die Einteilung in vier statt sieben Schichten macht die Datenübertragung nicht schneller oder sparsamer.
+
+
+
