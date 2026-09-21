@@ -24,6 +24,24 @@ Bei IoT-Geräten sind Energie, Rechenleistung und Bandbreite häufig begrenzt. �
 
 Dieser Aufwand entsteht durch die tatsächlich eingesetzten Protokolle und ihre Umsetzung. Allein die Einteilung in vier statt sieben Schichten macht die Datenübertragung nicht schneller oder sparsamer.
 
+### 4. Entkopplung durch Publish/Subscribe
+
+Bei einer direkten Übertragung von zehn Temperatursensoren an drei Displays müsste jeder Sensor seine Messwerte an drei Empfänger senden. Dadurch entstehen 30 Kommunikationsbeziehungen. Änderungen an den Empfängern müssten gegebenenfalls bei allen Sensoren berücksichtigt werden.
+
+Mit MQTT veröffentlichen die Sensoren ihre Messwerte auf Topics beim Broker. Die Displays abonnieren die gewünschten Topics und erhalten darüber die Nachrichten. Die Sensoren müssen die einzelnen Displays nicht kennen.
+
+Ein zusätzliches Display verbindet sich mit dem Broker und abonniert die passenden Topics. Die Sensoren müssen dafür nicht verändert werden. Diese Entkopplung erleichtert die Erweiterung und Wartung des Systems. Voraussetzung ist, dass der Broker erreichbar ist und die Geräte passende Topics und Datenformate verwenden.
+
+### 5. Netzwerkgrenzen und Overlay-Netzwerke
+
+Von meinem Heimnetz aus kann ich einen Laptop im Heim-WLAN eines Kommilitonen normalerweise nicht direkt über dessen private IPv4-Adresse anpingen. Private Adressen werden im öffentlichen Internet nicht geroutet und können in verschiedenen Heimnetzen mehrfach vorkommen. Außerdem erschweren NAT und Firewallregeln unerwartete eingehende Verbindungen. Die öffentliche Adresse seines Internetanschlusses führt daher nicht automatisch zu seinem Laptop.
+
+Ein Overlay-Netzwerk wie Nebula oder Yggdrasil schafft ein zusätzliches virtuelles Netzwerk über vorhandene Verbindungen. Die teilnehmenden Geräte erhalten Overlay-Adressen und können darüber miteinander kommunizieren, obwohl sie in unterschiedlichen Heimnetzen stehen.
+
+Eine Overlay-IP ist nicht automatisch eine öffentliche Internet-IP. Für den Zugriff muss ein passender Zugang zum Overlay bestehen. Auch dort müssen Routing und Firewallregeln die Kommunikation erlauben. Ein Overlay überwindet nicht automatisch jede Netzwerksperre.
+
+
+
 ## Praktische Netzwerkuntersuchung
 
 ### Lokale Netzwerkkonfiguration
