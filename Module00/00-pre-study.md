@@ -54,6 +54,13 @@ Die Sternchen zeigen ausgebliebene Antworten innerhalb der Wartezeit. Sie bedeut
 
 Die drei Zeitangaben pro Hop sind getrennte Messungen der Hin- und Rücklaufzeit zwischen meinem Laptop und der antwortenden Station.
 
+### Screenshots als Nachweise
+
+![Netzwerkkonfiguration](ipconfig.png)
+
+![Routingtabelle](routingtabelle.png)
+
+![Routenverfolgung](tracert.png)
 
 
 
